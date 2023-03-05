@@ -1,0 +1,36 @@
+.quiz__nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.quiz__nav__heading {
+    margin-bottom: 30px;
+}
+
+.question__number {
+    width: 40px;
+    padding-block: 10px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.question__number:visited,
+.question__number:target {
+    background-color: white;
+}
+
+.question__number.clicked {
+    background-color: var(--color-grey);
+}
+
+.question__number.active {
+    background-color: var(--color-green);
+}
+@media screen and (max-width: 1024px){
+    .quiz__nav__list {
+        flex-wrap: unset;
+    }
+}

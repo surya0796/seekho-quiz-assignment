@@ -1,13 +1,72 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-green: #4aa571;
+  --color-purple: #8031a7;
+  --color-grey: #4a4a68;
+  --primary-color: #8031A7;
+  --primary-color-400: #A555CD;
+  --primary-color-300: #B471D5;
+  --primary-color-200: #C38DDE;
+  --primary-color-100: #E1C6EEFF;
+  --primary-color-50: rgba(225, 198, 238, 0.5);
+  --secondary-color: #4AA571;
+  --secondary-color-300: #72C796;
+  --secondary-color-200: #A6E7C1;
+  --secondary-color-100: #DCF3E6FF;
+  --secondary-color-50: rgba(220, 243, 230, 0.5);
+  --tertiary-color: #4A4A68;
+  --tertiary-color-300: #8C8CA1;
+  --tertiary-color-200: #ECF1F4;
+  --tertiary-color-100: #FAFCFE;
+  --tertiary-color-50: #F5F8F9;
+  --danger-color: #E65E69;
+  --white-color: #FFFFFFFF;
+  --alt-secondary: #00A8B4;
+  --alt-primary: #FDC210;
+  --font-regular: 400;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  /* Not removed via appearance */
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 2px solid var(--color-grey);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  display: inline-flex;
+  justify-content: center;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--alt-primary);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }
