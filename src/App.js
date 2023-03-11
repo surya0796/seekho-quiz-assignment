@@ -6,6 +6,7 @@ import QuestionNav from "./components/QuestionNav";
 import RealTimeResult from "./components/Result/RealTimeResult";
 
 const APIURL = `https://quizapi.io/api/v1/questions?apiKey=${process.env.REACT_APP_QUESTION_API}&category=code&difficulty=Easy&tags=JavaScript`;
+
 function App() {
   const [questions, setQuestions] = useState(allQuestion);
   const [currQuestion, setCurrQuestion] = useState(0);
@@ -23,6 +24,11 @@ function App() {
       setCurrQuestion((prev) => prev - value);
     }
   };
+
+  // useEffect(()=>{
+
+  // },[])
+
   useEffect(() => {
     setClickedList({ ...clickedList, [currQuestion]: true });
   }, [currQuestion]);
@@ -30,12 +36,10 @@ function App() {
   const handleGoToQuestionByNumber = (value) => {
     setCurrQuestion(value);
   };
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
 
   useEffect(() => {
     const resultObj = {};
+    questions.sort((currObj,nextObj)=>currObj.id-nextObj.id)
     questions.forEach((question, idx) => {
       const uniquesId = question.id;
       resultObj[uniquesId] = {
@@ -71,13 +75,16 @@ function App() {
       result: finalScore,
     });
   };
+  useEffect(()=>{
+    console.log("result",result)
+  },[result])
   return (
     <div className="quiz-app">
       <h1 className="quiz__app__heading">Let's Quizy</h1>
       {!showResult ? (
         <div className="quiz__app__container">
           <div className="quiz__layout quiz__app__result">
-            <RealTimeResult result={result} />
+            <RealTimeResult handleQuestionClick={handleGoToQuestionByNumber} result={result} />
           </div>
           <div className="quiz__layout quiz__app__inner">
             <div className="next__previous">
@@ -111,6 +118,7 @@ function App() {
           <QuestionNav
             clickedList={clickedList}
             currQuestion={currQuestion}
+            result={result}
             handleQuestionClick={handleGoToQuestionByNumber}
             questions={allQuestion}
           />

@@ -29,6 +29,9 @@
 .question__number.active {
     background-color: var(--color-green);
 }
+.question__number.answered {
+    background-color: #d84141;
+}
 @media screen and (max-width: 1024px){
     .quiz__nav__list {
         flex-wrap: unset;

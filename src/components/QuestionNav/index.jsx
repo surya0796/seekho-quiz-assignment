@@ -1,6 +1,6 @@
 import "./styles.css"
 
-const QuestionNav = ({ questions, currQuestion, handleQuestionClick, clickedList }) => {
+const QuestionNav = ({ questions, currQuestion, result, handleQuestionClick, clickedList }) => {
     let questionsList = []
     const goToQuestion = (value) => {
         handleQuestionClick && handleQuestionClick(value)
@@ -8,7 +8,7 @@ const QuestionNav = ({ questions, currQuestion, handleQuestionClick, clickedList
 
     if (questions.length > 0) {
         questionsList = questions.map((question, idx) => {
-            return <div className={`question__number ${clickedList[idx] ? 'clicked' : ''} ${currQuestion === idx ? 'active' : ''}`} onClick={() => goToQuestion(idx)} key={question.id}><span className='number'>{idx + 1}</span></div>
+            return <div className={`question__number ${clickedList[idx] ? 'clicked' : ''} ${currQuestion === idx ? 'active' : ''} ${result[question.id]?.givenAnswer ? 'answered': ''}`} onClick={() => goToQuestion(idx)} key={question.id}><span className='number'>{idx + 1}</span></div>
         })
     }
     else {
